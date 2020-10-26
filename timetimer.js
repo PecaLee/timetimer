@@ -14,7 +14,7 @@ function paintValue() {
 
 function init() {
   paintValue();
-  slider.addEventListener("mousemove", paintValue);
+  slider.addEventListener("mousedown", setInterval(paintValue));
 }
 
 init();
