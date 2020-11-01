@@ -13,7 +13,9 @@ let SETTEDTIME, RUNALARM, NOW;
 
 function getValue() {
   const alarmTime = slider.value;
-  sliderValue.innerHTML = alarmTime;
+  sliderValue.innerHTML = `You set the timer for ${
+    alarmTime == 60 ? "1 hour." : alarmTime + " min."
+  }`;
   return alarmTime;
 }
 
@@ -27,10 +29,18 @@ function initTimer() {
 
 function runAlarm() {
   --NOW;
-  const min = parseInt(NOW / 60),
-    sec = NOW % 60;
-  remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
-  slider.value = min;
+  if (NOW <= 0) {
+    clearInterval(RUNALARM);
+    remainTime.innerHTML = "It's over, Take a break.";
+    const audioFile = new Audio("src/alarmSound.wav");
+    audioFile.volume = 1;
+    audioFile.play();
+  } else {
+    const min = parseInt(NOW / 60),
+      sec = NOW % 60;
+    remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+    slider.value = min;
+  }
 }
 
 function drawTimer() {
