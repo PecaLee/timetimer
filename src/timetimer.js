@@ -65,8 +65,8 @@ function runTimer() {
 }
 
 function init() {
-  slider.addEventListener("mousedown", setTimer);
-  slider.addEventListener("mouseup", runTimer);
+  slider.addEventListener("pointerdown", setTimer);
+  slider.addEventListener("pointerup", runTimer);
 }
 
 init();
