@@ -12,7 +12,7 @@ let SWITCH = false;
 let SETTEDTIME, RUNALARM, NOW;
 
 function getValue() {
-  const alarmTime = slider.value;
+  const alarmTime = parseInt(slider.value / 60);
   sliderValue.innerHTML = `You set the timer for ${
     alarmTime == 60 ? "1 hour." : alarmTime + " min."
   }`;
@@ -21,7 +21,7 @@ function getValue() {
 
 function initTimer() {
   const alarmTime = getValue();
-  const setTime = alarmTime * 60;
+  const setTime = alarmTime;
   const min = parseInt(setTime / 60),
     sec = setTime % 60;
   remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
@@ -39,7 +39,7 @@ function runAlarm() {
     const min = parseInt(NOW / 60),
       sec = NOW % 60;
     remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
-    slider.value = min;
+    slider.value = NOW;
   }
 }
 
