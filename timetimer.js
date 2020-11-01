@@ -1,59 +1,62 @@
 "use strict";
 
-const form = document.querySelector("#form"),
-  slider = form.querySelector("#slider"),
-  sliderValue = form.querySelector("#sliderValue");
+const timer = document.querySelector(".timer"),
+  form = timer.querySelector("#form"),
+  remainTime = document.querySelector(".remainTime");
 
-const remainTime = document.querySelector(".remainTime");
+const slider = form.querySelector("#slider"),
+  sliderValue = form.querySelector("#sliderValue");
 
 let SWITCH = false;
 
+let SETTEDTIME, RUNALARM, NOW;
+
 function getValue() {
-  const v = slider.value;
-  return v;
+  const alarmTime = slider.value;
+  sliderValue.innerHTML = alarmTime;
+  return alarmTime;
 }
 
-function paintValue() {
-  const v = getValue();
-  sliderValue.innerHTML = v;
-}
-
-function rePaintValue() {
-  SWITCH = false;
-  setInterval(paintValue);
-}
-
-function setTimer() {
-  SWITCH = true;
-  const time = getValue();
-  let setTime = time * 60;
-  const min = parseInt(setTime / 60);
-  const sec = setTime % 60;
+function initTimer() {
+  const alarmTime = getValue();
+  const setTime = alarmTime * 60;
+  const min = parseInt(setTime / 60),
+    sec = setTime % 60;
   remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
 }
 
-function timeTimer() {
-  const time = getValue();
-  let setTime = time * 60;
-  let intervalTimer;
-  if (SWITCH == true) {
-    intervalTimer = setInterval(timer, 1000);
+function runAlarm() {
+  --NOW;
+  const min = parseInt(NOW / 60),
+    sec = NOW % 60;
+  remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+  slider.value = min;
+}
+
+function drawTimer() {
+  if (SWITCH == false) {
+    clearInterval(RUNALARM);
+    SETTEDTIME = setInterval(initTimer, 100);
   } else {
-    clearInterval(intervalTimer);
-  }
-  function timer() {
-    --setTime;
-    const min = parseInt(setTime / 60);
-    const sec = setTime % 60;
-    remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+    clearInterval(SETTEDTIME);
+    NOW = getValue() * 60;
+    RUNALARM = setInterval(runAlarm, 1000);
   }
 }
 
+function setTimer() {
+  SWITCH = false;
+  drawTimer();
+}
+
+function runTimer() {
+  SWITCH = true;
+  drawTimer();
+}
+
 function init() {
-  paintValue();
-  slider.addEventListener("mousedown", rePaintValue);
-  slider.addEventListener("mouseup", setTimer);
-  slider.addEventListener("mouseup", timeTimer);
+  slider.addEventListener("mousedown", setTimer);
+  slider.addEventListener("mouseup", runTimer);
 }
 
 init();
