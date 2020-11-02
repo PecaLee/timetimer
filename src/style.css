@@ -29,6 +29,25 @@ body {
   background-image: url("../src/bg.png");
 }
 
+.timer {
+  opacity: 1;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.timer.opacity {
+  opacity: 0.3;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.info {
+  position: absolute;
+  margin-top: -20pt;
+}
+
+.displayNone {
+  display: none;
+}
+
 #form {
   display: flex;
   flex-direction: column;
@@ -36,7 +55,7 @@ body {
 }
 
 form #timetimer {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   top: 40pt;
 }

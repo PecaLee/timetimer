@@ -2,7 +2,8 @@
 
 const timer = document.querySelector(".timer"),
   form = timer.querySelector("#form"),
-  remainTime = document.querySelector(".remainTime");
+  remainTime = document.querySelector(".remainTime"),
+  info = document.querySelector(".info");
 
 const slider = form.querySelector("#slider"),
   sliderValue = form.querySelector("#sliderValue");
@@ -76,6 +77,11 @@ function runTimer() {
   drawTimer();
 }
 
+function displayNone() {
+  info.classList.add("displayNone");
+  timer.classList.remove("opacity");
+}
+
 function init() {
   if (isMobile == false) {
     slider.addEventListener("pointerdown", setTimer);
@@ -83,12 +89,14 @@ function init() {
     slider.addEventListener("pointerup", function () {
       slider.className = "";
     });
+    info.addEventListener("click", displayNone);
   } else {
     slider.addEventListener("touchstart", setTimer);
     slider.addEventListener("touchend", runTimer);
     slider.addEventListener("touchend", function () {
       slider.className = "";
     });
+    info.addEventListener("touchstart", displayNone);
   }
 }
 
