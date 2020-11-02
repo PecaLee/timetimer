@@ -11,6 +11,14 @@ let SWITCH = false;
 
 let SETTEDTIME, RUNALARM, NOW;
 
+let isMobile = false;
+
+const filter = "win16|win32|win64|mac";
+
+if (navigator.platform) {
+  isMobile = filter.indexOf(navigator.platform.toLowerCase()) < 0;
+}
+
 function getValue() {
   const alarmTime = parseInt(slider.value / 60);
   sliderValue.innerHTML = `You set the timer for ${
@@ -69,11 +77,19 @@ function runTimer() {
 }
 
 function init() {
-  slider.addEventListener("pointerdown", setTimer);
-  slider.addEventListener("pointerup", runTimer);
-  slider.addEventListener("pointerup", function () {
-    slider.className = "";
-  });
+  if (isMobile == false) {
+    slider.addEventListener("pointerdown", setTimer);
+    slider.addEventListener("pointerup", runTimer);
+    slider.addEventListener("pointerup", function () {
+      slider.className = "";
+    });
+  } else {
+    slider.addEventListener("touchstart", setTimer);
+    slider.addEventListener("touchend", runTimer);
+    slider.addEventListener("touchend", function () {
+      slider.className = "";
+    });
+  }
 }
 
 init();
