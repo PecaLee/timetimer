@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div class="timer">
-      <form id="form">
-        <label for="slider">Time timer</label>
-        <input
-          type="range"
-          name="range"
-          id="slider"
-          min="0"
-          max="3600"
-          step="1"
-          value="0"
-        />
-        <label for="slider" id="sliderValue">welcome.</label>
-      </form>
+    <div class="wrapper">
+      <div class="timer">
+        <form id="form">
+          <label for="slider" id="timetimer">Time timer</label>
+          <label for="slider" id="sliderValue">welcome.</label>
+          <input
+            type="range"
+            name="range"
+            id="slider"
+            min="0"
+            max="3600"
+            step="1"
+            value="0"
+          />
+        </form>
+      </div>
+      <div class="remainTime">Set the timer.</div>
     </div>
-    <div class="remainTime">Set the timer.</div>
-    <script src="src/js/blotter.min.js"></script>
     <script src="src/js/timetimer.js"></script>
-    <script src="src/js/texteffect.js"></script>
   </body>
 </html>

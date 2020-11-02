@@ -19,11 +19,17 @@ function getValue() {
   return alarmTime;
 }
 
+function drawRemainTime(v) {
+  const min = parseInt(v / 60),
+    sec = v % 60;
+  const now = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+  remainTime.innerHTML = now;
+  return now;
+}
+
 function initTimer() {
   const alarmTime = getValue() * 60;
-  const min = parseInt(alarmTime / 60),
-    sec = alarmTime % 60;
-  remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+  drawRemainTime(alarmTime);
 }
 
 function runAlarm() {
@@ -35,9 +41,7 @@ function runAlarm() {
     audioFile.volume = 1;
     audioFile.play();
   } else {
-    const min = parseInt(NOW / 60),
-      sec = NOW % 60;
-    remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
+    drawRemainTime(NOW);
     slider.value = NOW;
   }
 }

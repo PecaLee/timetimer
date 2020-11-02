@@ -1,17 +1,29 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;800&display=swap");
 
-body {
-  width: 100vw;
-  height: 100vh;
-  font-family: "Poppins", sans-serif;
+* {
+  box-sizing: border-box;
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
+  min-height: 470px;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.wrapper {
+  width: 300px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20pt 0;
 }
 
 #form {
@@ -20,24 +32,54 @@ body {
   align-items: center;
 }
 
-form label {
+form #timetimer {
   font-size: 3rem;
   font-weight: 800;
+  top: 40pt;
 }
 
 form #sliderValue {
   font-size: 1rem;
   font-weight: 500;
+  bottom: 80pt;
+}
+
+form input[type="range"] {
+  all: unset;
+  height: 3pt;
+  width: 200pt;
+  background: transparent;
+  cursor: pointer;
+  background: #9f755f;
+  border-radius: 20%;
+}
+
+form input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 6pt;
+  width: 7pt;
+  border-radius: 50%;
+  background: rgb(240, 62, 62);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 9px 5px #00000038, 0px 0px 9px 5px #0d0d0d2f;
 }
 
 #slider {
-  margin: 30pt 0 20pt 0;
-  width: 250pt;
   cursor: pointer;
+  transform: rotate(-77deg);
+  left: calc(50% - 150pt);
+  margin-top: 120pt;
 }
 
 .remainTime {
   margin-top: 35pt;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
+  bottom: 40pt;
 }
