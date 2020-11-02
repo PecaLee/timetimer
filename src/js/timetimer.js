@@ -20,10 +20,9 @@ function getValue() {
 }
 
 function initTimer() {
-  const alarmTime = getValue();
-  const setTime = alarmTime;
-  const min = parseInt(setTime / 60),
-    sec = setTime % 60;
+  const alarmTime = getValue() * 60;
+  const min = parseInt(alarmTime / 60),
+    sec = alarmTime % 60;
   remainTime.innerHTML = `${min} : ${sec < 10 ? "0" + sec : sec}`;
 }
 
