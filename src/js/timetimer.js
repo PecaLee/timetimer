@@ -40,6 +40,7 @@ function runAlarm() {
     const audioFile = new Audio("src/alarmSound.wav");
     audioFile.volume = 1;
     audioFile.play();
+    slider.className = "burnedOff";
   } else {
     drawRemainTime(NOW);
     slider.value = NOW;
@@ -70,6 +71,9 @@ function runTimer() {
 function init() {
   slider.addEventListener("pointerdown", setTimer);
   slider.addEventListener("pointerup", runTimer);
+  slider.addEventListener("pointerup", function () {
+    slider.className = "";
+  });
 }
 
 init();
