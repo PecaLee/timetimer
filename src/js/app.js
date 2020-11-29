@@ -108,9 +108,9 @@ function displayNone() {
 function init() {
   const mobile = isMobile();
   if (mobile == false) {
-    slider.addEventListener("pointerdown", setTimer);
-    slider.addEventListener("pointerup", runTimer);
-    info.addEventListener("pointerdown", displayNone);
+    slider.addEventListener("mousedown", setTimer);
+    slider.addEventListener("mouseup", runTimer);
+    info.addEventListener("mousedown", displayNone);
   } else {
     slider.addEventListener("touchstart", setTimer);
     slider.addEventListener("touchend", runTimer);
