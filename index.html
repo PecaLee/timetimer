@@ -15,31 +15,33 @@
       property="og:description"
       content="1 hour timer that looks like Incense."
     />
-
     <title>Peca Lee | Incense timer</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="wrapper">
       <img src="src/info.png" class="info" />
-      <div class="timer opacity">
+      <div class="timer">
         <form id="form">
           <label for="slider" id="timetimer">Incense timer</label>
-          <label for="slider" id="sliderValue">welcome.</label>
-          <input
-            type="range"
-            name="range"
-            class="burnedOff"
-            id="slider"
-            min="0"
-            max="3600"
-            step="1"
-            value="0"
-          />
+          <label for="slider" id="setValue">welcome.</label>
+          <div class="sliderWrapper">
+            <input
+              type="range"
+              name="range"
+              id="slider"
+              class="burnedOut"
+              min="0"
+              max="3600"
+              step="1"
+              value="0"
+            />
+          </div>
         </form>
       </div>
       <div class="remainTime">Set the timer.</div>
     </div>
-    <script src="src/js/timetimer.js"></script>
+    <script src="src/js/incenseColor.js"></script>
+    <script src="src/js/app.js"></script>
   </body>
 </html>
