@@ -101,8 +101,33 @@ function runTimer() {
 }
 
 //인비저블 클래스 추가
+function displayYes() {
+  info.classList.remove("displayNone");
+}
+
 function displayNone() {
   info.classList.add("displayNone");
+}
+
+//사용법 표시
+function clickedInfo() {
+  localStorage.setItem("clickedInfo", true);
+}
+
+function howToUse() {
+  const mobile = isMobile();
+  const isClicked = JSON.parse(localStorage.getItem("clickedInfo"));
+  if (isClicked != true) {
+    if (mobile == false) {
+      displayYes();
+      info.addEventListener("mousedown", clickedInfo);
+      info.addEventListener("mousedown", displayNone);
+    } else {
+      displayYes();
+      info.addEventListener("touchstart", clickedInfo);
+      info.addEventListener("touchstart", displayNone);
+    }
+  }
 }
 
 function init() {
@@ -110,12 +135,11 @@ function init() {
   if (mobile == false) {
     slider.addEventListener("mousedown", setTimer);
     slider.addEventListener("mouseup", runTimer);
-    info.addEventListener("mousedown", displayNone);
   } else {
     slider.addEventListener("touchstart", setTimer);
     slider.addEventListener("touchend", runTimer);
-    info.addEventListener("touchstart", displayNone);
   }
+  howToUse();
 }
 
 init();
