@@ -120,8 +120,8 @@ function howToUse() {
   if (isClicked != true) {
     if (mobile == false) {
       displayYes();
-      info.addEventListener("mousedown", clickedInfo);
-      info.addEventListener("mousedown", displayNone);
+      info.addEventListener("pointerdown", clickedInfo);
+      info.addEventListener("pointerdown", displayNone);
     } else {
       displayYes();
       info.addEventListener("touchstart", clickedInfo);
@@ -133,8 +133,8 @@ function howToUse() {
 function init() {
   const mobile = isMobile();
   if (mobile == false) {
-    slider.addEventListener("mousedown", setTimer);
-    slider.addEventListener("mouseup", runTimer);
+    slider.addEventListener("pointerdown", setTimer);
+    slider.addEventListener("pointerup", runTimer);
   } else {
     slider.addEventListener("touchstart", setTimer);
     slider.addEventListener("touchend", runTimer);
