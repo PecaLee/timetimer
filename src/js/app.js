@@ -115,30 +115,30 @@ function clickedInfo() {
 }
 
 function howToUse() {
-  //const mobile = isMobile();
+  const mobile = isMobile();
   const isClicked = JSON.parse(localStorage.getItem("clickedInfo"));
   if (isClicked != true) {
-    //if (mobile == false) {
-    displayYes();
-    info.addEventListener("mousedown", clickedInfo);
-    info.addEventListener("mousedown", displayNone);
-    //} else {
-    //  displayYes();
-    //  info.addEventListener("touchstart", clickedInfo);
-    //  info.addEventListener("touchstart", displayNone);
-    //}
+    if (mobile == false) {
+      displayYes();
+      info.addEventListener("mousedown", clickedInfo);
+      info.addEventListener("mousedown", displayNone);
+    } else {
+      displayYes();
+      info.addEventListener("touchstart", clickedInfo);
+      info.addEventListener("touchstart", displayNone);
+    }
   }
 }
 
 function init() {
-  //const mobile = isMobile();
-  //if (mobile == false) {
-  slider.addEventListener("mousedown", setTimer);
-  slider.addEventListener("mouseup", runTimer);
-  //} else {
-  //  slider.addEventListener("touchstart", setTimer);
-  //  slider.addEventListener("touchend", runTimer);
-  //}
+  const mobile = isMobile();
+  if (mobile == false) {
+    slider.addEventListener("mousedown", setTimer);
+    slider.addEventListener("mouseup", runTimer);
+  } else {
+    slider.addEventListener("touchstart", setTimer);
+    slider.addEventListener("touchend", runTimer);
+  }
   howToUse();
 }
 
